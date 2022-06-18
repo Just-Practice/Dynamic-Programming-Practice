@@ -14,9 +14,13 @@ public class BridgeProblem {
         int[] t = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }; // input
 
         int[] opt = new int[t.length];
-        opt[0] = t[0];
-        opt[1] = t[1];
+        opt[0] = t[0]; // fast person
+        opt[1] = t[1]; // second fast person
 
+        // imaging that the fast and the second fast person just run back and forth to pass the torch and save the time
+        // although the number of runs has increased, but the total time-cost is decreasing
+        // to show that greedy will be slower: 
+        // (1&10=10)+1ran-back+(1&9=9)+1ran-back+...+(1&3=3)+1ran-back+(1&2=2)=(10+1)+(9+1)+...+(3+1)+2=62
         for (int i = 2; i < t.length; i++) {
             opt[i] = Math.min(opt[i - 1] + t[0] + t[i],
                     opt[i - 2] + t[0] + t[i] + (2 * t[1]));
