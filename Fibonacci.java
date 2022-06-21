@@ -1,12 +1,13 @@
 public class Fibonacci {
+    static int max = 100;
     static int counter0 = 0;
-    static int[] fib1_result = new int[100];
+    static int[] fib1_result = new int[max];
     static int counter1 = 0;
-    static int[] fib2_result = new int[100];
+    static int[] fib2_result = new int[max];
     static int counter2 = 0;
-    static int[] fib3_result = new int[100];
+    static int[] fib3_result = new int[max];
     static int counter3 = 0;
-    static int[] fib4_result = new int[100];
+    static int[] fib4_result = new int[max];
     static int counter4 = 0;
 
     public static void main(String[] args) {
@@ -63,10 +64,10 @@ public class Fibonacci {
         if (fib2_result[n] != 0)
             return;
 
-        counter2++;
         fib2(n - 1);
         fib2(n - 2);
         fib2_result[n] = fib2_result[n - 1] + fib2_result[n - 2];
+        counter2++;
     }
 
     static void fib3(int n) {
@@ -82,7 +83,6 @@ public class Fibonacci {
         if (fib4_result[n] != 0)
             return fib4_result[n];
 
-        counter4++;
         if (n % 2 == 0) {
             int k = n / 2;
             fib4_result[n] = (2 * fib4(k - 1) + fib4(k)) * fib4(k);
@@ -91,6 +91,7 @@ public class Fibonacci {
             fib4_result[n] = (fib4(k) * fib4(k) + fib4(k - 1) * fib4(k - 1));
         }
 
+        counter4++;
         return fib4_result[n];
     }
 }
